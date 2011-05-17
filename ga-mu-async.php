@@ -2,8 +2,8 @@
 /*
 Plugin Name: Google Analytics Multisite Async
 Plugin URI: http://www.darturonline.se/ga-mu-async.html
-Description: Google Analytics Multisite Async lets the superadmin collect statistics from all sites and it lets the regular site admins to collect statistics from their own site. This means that statistics are collected to 2 different Analytics accounts at once, assuming that the site admin have entered an ID of course. It's the async version of Analytics. There is a simple ID edit page that is only visible to the admins.
-Version: 1.0
+Description: Google Analytics Multisite Async lets the network admin collect statistics from all sites and it lets the regular site admins collect statistics from their own site. This means that statistics are collected to 2 different Analytics accounts at once, assuming that the site admin have entered an ID of course. It's the asynchronous version of Analytics. The network admin can choose whether the site admins should be able to collect statistics or not. 
+Version: 1.1
 Author: Niklas Jonsson
 Author URI: http://www.darturonline.se/ga-mu-async.html
 License: GPL2
