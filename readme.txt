@@ -2,21 +2,24 @@
 Contributors: Dartur
 Donate link: http://darturonline.se/ga_mu_async.html
 Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
-Requires at least: 3.0.4
-Tested up to: 3.0.4
-Stable tag: trunk
+Requires at least: 3.1
+Tested up to: 3.1.2
+Stable tag: 1.1
 License: GPLv2
 
-Super admin can collect statistics networkwide with one GA account and let the regular admins collect statistics on their own sites with own accounts.
+Network admin can collect statistics networkwide with one GA account and let the regular admins collect statistics on their own sites with own accounts.
 
 == Description ==
 
-Google Analytics Multisite Async lets the super admin collect statistics from all sites and it lets the regular site admins collect statistics from their own site. This means that statistics are collected to 2 different Analytics accounts at once, assuming that the site admin have entered an ID of course. It's the asynchronous version of Analytics. There is a simple settings page that is only visible to the admins.
+Google Analytics Multisite Async lets the network admin collect statistics from all sites and it lets the regular site admins collect statistics from their own site. This means that statistics are collected to 2 different Analytics accounts at once, assuming that the site admin have entered an ID of course. It's the asynchronous version of Analytics. The network admin can choose whether the site admins should be able to collect statistics or not.
 
 The plugin is localized and available in:
 
-* english
-* swedish
+* English
+* Swedish
+* German
+* Dutch
+* Persian
 
 If you translate it to more languages please send me the language files so I can include them here.
 
@@ -30,7 +33,8 @@ http://www.darturonline.se/ga_mu_async.html
 2. Verify that your networks main blog ID is 1. If so, jump to step 4.
 3. Open the plugin file and change the number next to MAIN_BLOG_ID to your main blog ID.
 4. Activate the plugin for network.
-5. You will find a new option in the Settings menu called "Google Analytics".
+5. You (network admin) will find a new option in the network admin page in the Settings menu called "Google Analytics".
+6. Site admins will find a new option in the Settings menu called "Google Analytics".
 
 == Screenshots ==
 
@@ -40,10 +44,19 @@ http://www.darturonline.se/ga_mu_async.html
 
 == Changelog ==
 
+= 1.1 =
+* Network admins now change settings through the network administration page.
+* A new option added so that network admins can choose whether site admins should be able to collect statistics or not.
+* Small bug corrected that caused the main blog to send data twice.
+* New languages added: German, Dutch and Persian.
+
 = 1.0 =
 * First release!
 
 == Upgrade Notice ==
+
+= 1.1 =
+If you are using older version than 3.1 DO NOT UPGRADE. This update makes use of the new network admin menu and it was first introduced in version 3.1.
 
 = 1.0 =
 * First release!
@@ -66,3 +79,6 @@ This plugin is currently available in the following languages:
 
 * English
 * Swedish
+* German
+* Dutch
+* Persian
