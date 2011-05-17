@@ -17,9 +17,9 @@ The plugin is localized and available in:
 
 * English
 * Swedish
-* German
-* Dutch
-* Persian
+* German (Thanks Jenny at http://www.professionaltranslation.com)
+* Dutch (Thanks Rene at http://wpwebshop.com)
+* Persian (Thanks Sushynat at http://www.zavarzadeh.org)
 
 If you translate it to more languages please send me the language files so I can include them here.
 
