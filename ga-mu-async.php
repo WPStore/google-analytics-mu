@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Google Analytics MU
-Plugin URI: https://github.com/foe-services/google-analytics-multisite-async
-Description: Collect network-wide Google Analytics statistics and allow site admins to use their own Tracking codes
+Plugin URI: https://github.com/foe-services/google-analytics-mu
+Description: Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
 Version: 1.0
 Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
@@ -58,7 +58,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 	function ga_mu_plugin_options() {
 		
 		global $blog_id;
-                load_plugin_textdomain('ga-mu-async', null, '/google-analytics-multisite-async/languages/');
+                load_plugin_textdomain('ga-mu-async', null, '/google-analytics-mu/languages/');
 		
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'ga-mu-async') );
@@ -105,7 +105,7 @@ endif;
 if ( !function_exists('ga_mu_plugin_network_options') ) :
 	function ga_mu_plugin_network_options() {
 	
-		load_plugin_textdomain('ga-mu-async', null, '/google-analytics-multisite-async/languages/');
+		load_plugin_textdomain('ga-mu-async', null, '/google-analytics-mu/languages/');
 		
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'ga-mu-async') );
