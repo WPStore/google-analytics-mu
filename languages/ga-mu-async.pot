@@ -1,0 +1,81 @@
+# Translation of Google Analytics Multisite Async in German
+# This file is distributed under the same license as the Google Analytics Multisite Async package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2012-11-22 14:26:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/0.1\n"
+"Project-Id-Version: Google Analytics Multisite Async\n"
+
+#: ga-mu-async.php:64 ga-mu-async.php:111
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ga-mu-async.php:70
+msgid "Analytics ID saved."
+msgstr ""
+
+#: ga-mu-async.php:74 ga-mu-async.php:133
+msgid "Google Analytics Statistics"
+msgstr ""
+
+#: ga-mu-async.php:78
+msgid "Google Analytics ID"
+msgstr ""
+
+#: ga-mu-async.php:84 ga-mu-async.php:146
+msgid "ex. UA-01234567-8"
+msgstr ""
+
+#: ga-mu-async.php:87 ga-mu-async.php:174
+msgid "Save changes"
+msgstr ""
+
+#: ga-mu-async.php:93
+msgid ""
+"As this is the main blog it uses the same ID as the network do. Changing "
+"this would change the networkwide ID; that is why it is disabled here."
+msgstr ""
+
+#: ga-mu-async.php:98 ga-mu-async.php:179
+msgid "Plugin created by"
+msgstr ""
+
+#: ga-mu-async.php:129
+msgid "Network settings saved."
+msgstr ""
+
+#: ga-mu-async.php:140
+msgid "Network Google Analytics ID"
+msgstr ""
+
+#: ga-mu-async.php:149
+msgid "Network domain"
+msgstr ""
+
+#: ga-mu-async.php:155
+msgid "ex. \".mydomain.com\". Obs! start with a dot! This value goes into"
+msgstr ""
+
+#: ga-mu-async.php:158
+msgid "Site specific accounts"
+msgstr ""
+
+#: ga-mu-async.php:168
+msgid "Allowed"
+msgstr ""
+
+#: ga-mu-async.php:169
+msgid ""
+"If this is disallowed the Google Analytics settings page will not be visible "
+"to site admins."
+msgstr ""
+
+#: ga-mu-async.php:170
+msgid ""
+"That means they will not be able to use their own Google Analytics accounts "
+"to track statistics."
+msgstr ""

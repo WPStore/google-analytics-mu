@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Google Analytics Multisite Async
-Plugin URI: http://www.darturonline.se/ga-mu-async.html
+Plugin URI: https://github.com/foe-services/google-analytics-multisite-async
 Description: Google Analytics Multisite Async lets the network admin collect statistics from all sites and it lets the regular site admins collect statistics from their own site. This means that statistics are collected to 2 different Analytics accounts at once, assuming that the site admin have entered an ID of course. It's the asynchronous version of Analytics. The network admin can choose whether the site admins should be able to collect statistics or not. 
 Version: 1.1
 Author: Niklas Jonsson
@@ -90,7 +90,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 				<p>
 					<?php
 					if ($blog_id == MAIN_BLOG_ID) {
-						_e('As this is the main blog it uses the same ID as the network do. Changing this would change the networkwide ID; that is why it is disabled here.');
+						_e('As this is the main blog it uses the same ID as the network do. Changing this would change the networkwide ID; that is why it is disabled here.', 'ga-mu-async');
 					} ?>
 				</p>
 			</form>
@@ -165,7 +165,7 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 							echo 'checked="checked"';
 						}
 						?>
-						 /> <?php _e('Allowed') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+						 /> <?php _e('Allowed', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
 						<?php _e('If this is disallowed the Google Analytics settings page will not be visible to site admins.', 'ga-mu-async')?><br>
 						<?php _e('That means they will not be able to use their own Google Analytics accounts to track statistics.', 'ga-mu-async')?></p></td>
 					</tr>
