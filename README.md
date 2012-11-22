@@ -1,8 +1,8 @@
-# Google Analytics Multisite Async
+# Google Analytics MU
 ## WordPress Plugin
 
-[Info@GitHub](https://github.com/foe-services/google-analytics-multisite-async) | 
-[Issue-Tracker](https://github.com/foe-services/google-analytics-multisite-async/issues) | 
+[Info@GitHub](https://github.com/foe-services/google-analytics-mu) | 
+[Issue-Tracker](https://github.com/foe-services/google-analytics-mu/issues) | 
 [Foe Services Labs](http://labs.foe-services.de/)
 
 ## About
@@ -19,7 +19,7 @@
 * ensure compatibility with WordPress in the future
 
 ## License
-License: [GPLv2](https://github.com/foe-services/google-analytics-multisite-async/blob/master/LICENSE)
+License: [GPLv2](https://github.com/foe-services/google-analytics-mu/blob/master/LICENSE)
   
 ## Developers
 * Christian Foellmann: [Github](https://github.com/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
