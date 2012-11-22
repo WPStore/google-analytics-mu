@@ -65,7 +65,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 		}
 		
 		if (isset($_POST['UAID'])) {
-			update_option(UAID_OPTION, $_POST['UAID']);
+			update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAID']));
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Analytics ID saved.', 'ga-mu-async') ?></p></div>
         <?php }	?>
@@ -121,9 +121,9 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 					$allowSiteSpecificAccounts = 0;
 				}
 				switch_to_blog(MAIN_BLOG_ID);
-				update_option(UAID_OPTION, $_POST['UAIDsuper']);
-				update_option(MAINDOMAIN_OPTION, $_POST['MainDomain']);
-				update_option(SITE_SPECIFIC_ALLOWED_OPTION, $_POST['AllowSiteSpecificAccounts']);
+				update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAIDsuper']));
+                                update_option(MAINDOMAIN_OPTION, preg_replace('/[^a-zA-Z\d\-\.]/','',$_POST['MainDomain']));
+                                update_option(SITE_SPECIFIC_ALLOWED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AllowSiteSpecificAccounts']));
 				restore_current_blog();
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Network settings saved.', 'ga-mu-async') ?></p></div>
