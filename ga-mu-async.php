@@ -58,7 +58,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 	function ga_mu_plugin_options() {
 		
 		global $blog_id;
-		load_plugin_textdomain('ga-mu-async', null, '/ga-mu-async/languages/');
+                load_plugin_textdomain('ga-mu-async', null, '/google-analytics-multisite-async/languages/');
 		
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'ga-mu-async') );
@@ -105,7 +105,7 @@ endif;
 if ( !function_exists('ga_mu_plugin_network_options') ) :
 	function ga_mu_plugin_network_options() {
 	
-		load_plugin_textdomain('ga-mu-async', null, '/ga-mu-async/languages/');
+		load_plugin_textdomain('ga-mu-async', null, '/google-analytics-multisite-async/languages/');
 		
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'ga-mu-async') );
