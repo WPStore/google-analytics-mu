@@ -2,7 +2,7 @@
 
 [Info@GitHub](https://github.com/foe-services/google-analytics-mu) | 
 [Issue-Tracker](https://github.com/foe-services/google-analytics-mu/issues) | 
-[Foe Services Labs](http://labs.foe-services.de/) | Current stable release: __v2.0__
+[Foe Services Labs](http://labs.foe-services.de/) | Current stable release: __v2.1__
 
 ### WordPress
 * Requires at least: 3.1
@@ -24,10 +24,11 @@
 ### Changelog
 * FIX XSS vulnerability (by Dan Collis-Puro)
 * FIX language support
+* ADDED FEATURE '_trackPageLoadTime' 
+* ADDED FEATURE '_anonymizeIp()'
 
 ### Roadmap
-* ADD FEATURE '_trackPageLoadTime' 
-* ADD FEATURE '_anonymizeIp()'
+* ADD autoupdate via network dashboard
 * ensure compatibility with WordPress in the future
 
 ### Installation (manual)
