@@ -36,6 +36,7 @@ define('UAID_OPTION','ga_mu_uaid');
 define('MAINDOMAIN_OPTION', 'ga_mu_maindomain');
 define('SITE_SPECIFIC_ALLOWED_OPTION','ga_mu_site_specific_allowed');
 define('ANONYMIZEIP_ACTIVATED_OPTION','ga_mu_anonymizeip_activated');
+define('PAGESPEED_ACTIVATED_OPTION','ga_mu_pagespeed_activated');
 define('MAIN_BLOG_ID',1);
 
 if ( !function_exists('ga_mu_plugin_network_menu') ) :
@@ -68,6 +69,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 		if (isset($_POST['UAID'])) {
 			update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAID']));
                         update_option(ANONYMIZEIP_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AnonymizeIpActivated']));
+                        update_option(PAGESPEED_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['PageSpeedActivated']));
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Analytics ID saved.', 'ga-mu-async') ?></p></div>
         <?php }	?>
@@ -97,6 +99,19 @@ if ( !function_exists('ga_mu_plugin_options') ) :
                                         ?>
                                          /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
                                         <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
+                                </tr>
+                                <tr>
+                                        <td style="padding-bottom: 18px;"><?php _e('Google PageSpeed', 'ga-mu-async') ?>:</td>
+                                        <td style="padding-bottom: 18px;"><input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
+                                        <?php
+                                        $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
+                                        restore_current_blog();
+                                        if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0') {
+                                                echo 'checked="checked"';
+                                        }
+                                        ?>
+                                         /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+                                        <?php _e('Activate to track performance via Google PageSpeed.', 'ga-mu-async')?></td>
                                 </tr>
 				<tr>
 					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'ga-mu-async') ?>" /></td>
@@ -135,7 +150,13 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 				else {
 					$allowSiteSpecificAccounts = 0;
 				}
-                                if (isset($_POST['AllowSiteSpecificAccounts'])) {
+                                if (isset($_POST['AnonymizeIpActivated'])) {
+					$AnonymizeIpActivated = 1;
+				}
+				else {
+					$AnonymizeIpActivated = 0;
+				}
+                                if (isset($_POST['PageSpeedActivated'])) {
 					$AnonymizeIpActivated = 1;
 				}
 				else {
@@ -146,6 +167,7 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
                                 update_option(MAINDOMAIN_OPTION, preg_replace('/[^a-zA-Z\d\-\.]/','',$_POST['MainDomain']));
                                 update_option(SITE_SPECIFIC_ALLOWED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AllowSiteSpecificAccounts']));
                                 update_option(ANONYMIZEIP_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AnonymizeIpActivated']));
+                                update_option(PAGESPEED_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['PageSpeedActivated']));
 				restore_current_blog();
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Network settings saved.', 'ga-mu-async') ?></p></div>
@@ -206,6 +228,20 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
                                                 <?php _e('This option activates IP-Anonymization for the network domain on the main site and all subsites.', 'ga-mu-async')?><br>
                                                 <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
                                         </tr>
+                                        <tr>
+                                                <td style="padding-bottom: 18px;"><?php _e('Google PageSpeed', 'ga-mu-async') ?>:</td>
+                                                <td style="padding-bottom: 18px;"><input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
+                                                <?php
+                                                switch_to_blog(MAIN_BLOG_ID);
+                                                $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
+                                                restore_current_blog();
+                                                if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0') {
+                                                        echo 'checked="checked"';
+                                                }
+                                                ?>
+                                                 /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+                                                <?php _e('Activate to track network-wide performance via Google PageSpeed.', 'ga-mu-async')?></td>
+                                        </tr>
 				<?php } ?>
 				<tr>
 					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'ga-mu-async') ?>" /></td>
@@ -228,11 +264,13 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		$uaidsuper = get_option(UAID_OPTION);
 		$maindomain = get_option(MAINDOMAIN_OPTION);
                 $anonymizeIpNetwork = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                $PageSpeedNetwork = get_option(PAGESPEED_ACTIVATED_OPTION);
 		$siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
 		restore_current_blog();
 
 		$uaid = get_option(UAID_OPTION);
 		$anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
                 
 		$super = false;
 		$user = false;
@@ -256,48 +294,57 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		
 		if ($super || $user)
 		{
-			$prefix = ''
-			?>
-				<script type="text/javascript">
-				var _gaq = _gaq || [];
-			<?php
-				if ($super) {
-					?>
-					_gaq.push(['_setAccount', '<?php echo $uaidsuper ?>']);
-					<?php
-					if ($maindomain)
-					{ ?>
-					_gaq.push(['_setDomainName', '<?php echo $maindomain ?>']);
-					<?php
-					} ?>
-					_gaq.push(['_trackPageview']);
-					<?php
-					if (isset($anonymizeIpNetwork) && $anonymizeIpNetwork != '' && $anonymizeIpNetwork != '0')
-					{ ?>
-					_gaq.push(['_gat._anonymizeIp']);
-					<?php
-					}
-					$prefix = 'b.';
-				}
-				
-				if ($user) {
-					?>
-					_gaq.push(['<?php echo $prefix ?>_setAccount', '<?php echo $uaid ?>']);
-					_gaq.push(['<?php echo $prefix ?>_trackPageview']);
-                                        <?php if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
-					{ ?>
-					_gaq.push(['<?php echo $prefix ?>_gat._anonymizeIp']);
-					<?php
-					}
-				}
-				?>
-				(function() {
-					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				  })();
-				</script>			
-				<?php
+                $prefix = ''
+                ?>
+                <script type="text/javascript">
+                var _gaq = _gaq || [];
+                <?php
+                if ($super) {
+                        ?>
+                        _gaq.push(['_setAccount', '<?php echo $uaidsuper ?>']);
+                        <?php
+                        if ($maindomain)
+                        { ?>
+                        _gaq.push(['_setDomainName', '<?php echo $maindomain ?>']);
+                        <?php
+                        } ?>
+                        _gaq.push(['_trackPageview']);
+                        <?php 
+                        if (isset($PageSpeedNetwork) && $PageSpeedNetwork != '' && $PageSpeedNetwork != '0')
+                        { ?>
+                        _gaq.push(['_trackPageLoadTime']);
+                        <?php }
+                        if (isset($anonymizeIpNetwork) && $anonymizeIpNetwork != '' && $anonymizeIpNetwork != '0')
+                        { ?>
+                        _gaq.push(['_gat._anonymizeIp']);
+                        <?php
+                        }                                        
+                        $prefix = 'b.';
+                }
+
+                if ($user) {
+                        ?>
+                        _gaq.push(['<?php echo $prefix ?>_setAccount', '<?php echo $uaid ?>']);
+                        _gaq.push(['<?php echo $prefix ?>_trackPageview']);
+                        <?php
+                        if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0')
+                        { ?>
+                            _gaq.push(['<?php echo $prefix ?>_trackPageLoadTime']);
+                        <?php }
+                        if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
+                        { ?>
+                        _gaq.push(['<?php echo $prefix ?>_gat._anonymizeIp']);
+                        <?php
+                        }
+                }
+                ?>
+                (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                  })();
+                </script>			
+                <?php
 		}
 	}
 endif;
