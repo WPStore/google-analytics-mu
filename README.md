@@ -29,6 +29,9 @@
 
 ### Roadmap
 * ADD autoupdate via network dashboard
+* ADD tabbed settings page
+* minified javascript snippet
+
 * ensure compatibility with WordPress in the future
 
 ### Installation (manual)
