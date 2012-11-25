@@ -3,7 +3,7 @@
 Plugin Name: Google Analytics MU
 Plugin URI: https://github.com/foe-services/google-analytics-mu
 Description: Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
-Version: 1.0
+Version: 2.0
 Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
 License: GPL2
