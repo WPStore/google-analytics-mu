@@ -35,6 +35,7 @@ add_action('wp_head', 'ga_mu_plugin_add_script_to_head');
 define('UAID_OPTION','ga_mu_uaid');
 define('MAINDOMAIN_OPTION', 'ga_mu_maindomain');
 define('SITE_SPECIFIC_ALLOWED_OPTION','ga_mu_site_specific_allowed');
+define('ANONYMIZEIP_ACTIVATED_OPTION','ga_mu_anonymizeip_activated');
 define('MAIN_BLOG_ID',1);
 
 if ( !function_exists('ga_mu_plugin_network_menu') ) :
@@ -83,6 +84,19 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 					} ?>
 					value="<?php echo get_option(UAID_OPTION); ?>" /> <?php _e('ex. UA-01234567-8', 'ga-mu-async') ?></td>
 				</tr>
+                                <tr>
+						<td style="padding-bottom: 18px;"><?php _e('Anonymize IPs', 'ga-mu-async') ?>:</td>
+						<td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
+						<?php
+						$anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+						restore_current_blog();
+						if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
+							echo 'checked="checked"';
+						}
+						?>
+						 /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+						<?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
+					</tr>
 				<tr>
 					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'ga-mu-async') ?>" /></td>
 				</tr>
@@ -190,6 +204,7 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		switch_to_blog(MAIN_BLOG_ID);
 		$uaidsuper = get_option(UAID_OPTION);
 		$maindomain = get_option(MAINDOMAIN_OPTION);
+                $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
 		$siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
 		restore_current_blog();
 
@@ -232,8 +247,12 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 					<?php
 					} ?>
 					_gaq.push(['_trackPageview']);
-					
-					<?php 
+					<?php
+					if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
+					{ ?>
+					_gaq.push(['_gat._anonymizeIp']);
+					<?php
+					}
 					$prefix = 'b.';
 				}
 				
