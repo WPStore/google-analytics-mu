@@ -10,72 +10,108 @@ msgstr ""
 "X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Google Analytics Multisite Async\n"
 
-#: ga-mu-async.php:64 ga-mu-async.php:111
+#: ga-mu-async.php:66 ga-mu-async.php:141
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ga-mu-async.php:70
+#: ga-mu-async.php:74
 msgid "Analytics ID saved."
 msgstr ""
 
-#: ga-mu-async.php:74 ga-mu-async.php:133
+#: ga-mu-async.php:78 ga-mu-async.php:177
 msgid "Google Analytics Statistics"
 msgstr ""
 
-#: ga-mu-async.php:78
+#: ga-mu-async.php:82
 msgid "Google Analytics ID"
 msgstr ""
 
-#: ga-mu-async.php:84 ga-mu-async.php:146
+#: ga-mu-async.php:88 ga-mu-async.php:190
 msgid "ex. UA-01234567-8"
 msgstr ""
 
-#: ga-mu-async.php:87 ga-mu-async.php:174
+#: ga-mu-async.php:91
+msgid "Anonymize IPs"
+msgstr ""
+
+#: ga-mu-async.php:100 ga-mu-async.php:113 ga-mu-async.php:227
+#: ga-mu-async.php:242
+msgid "Activated"
+msgstr ""
+
+#: ga-mu-async.php:101 ga-mu-async.php:229
+msgid ""
+"If AnonymizeIP is activated all tracked IPs will be saved in shortened form."
+msgstr ""
+
+#: ga-mu-async.php:104 ga-mu-async.php:232
+msgid "Google PageSpeed"
+msgstr ""
+
+#: ga-mu-async.php:114
+msgid "Activate to track performance via Google PageSpeed."
+msgstr ""
+
+#: ga-mu-async.php:117 ga-mu-async.php:247
 msgid "Save changes"
 msgstr ""
 
-#: ga-mu-async.php:93
+#: ga-mu-async.php:123
 msgid ""
 "As this is the main blog it uses the same ID as the network do. Changing "
 "this would change the networkwide ID; that is why it is disabled here."
 msgstr ""
 
-#: ga-mu-async.php:98 ga-mu-async.php:179
+#: ga-mu-async.php:128 ga-mu-async.php:252
 msgid "Plugin created by"
 msgstr ""
 
-#: ga-mu-async.php:129
+#: ga-mu-async.php:173
 msgid "Network settings saved."
 msgstr ""
 
-#: ga-mu-async.php:140
+#: ga-mu-async.php:184
 msgid "Network Google Analytics ID"
 msgstr ""
 
-#: ga-mu-async.php:149
+#: ga-mu-async.php:193
 msgid "Network domain"
 msgstr ""
 
-#: ga-mu-async.php:155
+#: ga-mu-async.php:199
 msgid "ex. \".mydomain.com\". Obs! start with a dot! This value goes into"
 msgstr ""
 
-#: ga-mu-async.php:158
+#: ga-mu-async.php:202
 msgid "Site specific accounts"
 msgstr ""
 
-#: ga-mu-async.php:168
+#: ga-mu-async.php:212
 msgid "Allowed"
 msgstr ""
 
-#: ga-mu-async.php:169
+#: ga-mu-async.php:213
 msgid ""
 "If this is disallowed the Google Analytics settings page will not be visible "
 "to site admins."
 msgstr ""
 
-#: ga-mu-async.php:170
+#: ga-mu-async.php:214
 msgid ""
 "That means they will not be able to use their own Google Analytics accounts "
 "to track statistics."
+msgstr ""
+
+#: ga-mu-async.php:217
+msgid "Anonymize IPs for Network-Tracking"
+msgstr ""
+
+#: ga-mu-async.php:228
+msgid ""
+"This option activates IP-Anonymization for the network domain on the main "
+"site and all subsites."
+msgstr ""
+
+#: ga-mu-async.php:243
+msgid "Activate to track network-wide performance via Google PageSpeed."
 msgstr ""
