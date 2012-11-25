@@ -22,10 +22,10 @@
 * Help to translate at [http://translate.foe-services.de](http://translate.foe-services.de)
 
 ### Changelog
-* FIX XSS vulnerability (by Dan Collis-Puro)
-* FIX language support
-* ADDED FEATURE '_trackPageLoadTime' 
-* ADDED FEATURE '_anonymizeIp()'
+* FIX XSS vulnerability (by Dan Collis-Puro) (v2.0)
+* FIX language support (v2.0)
+* ADDED FEATURE '_trackPageLoadTime' (v2.1)
+* ADDED FEATURE '_anonymizeIp()' (v2.1)
 
 ### Roadmap
 * ADD autoupdate via network dashboard
