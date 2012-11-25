@@ -67,6 +67,7 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 		
 		if (isset($_POST['UAID'])) {
 			update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAID']));
+                        update_option(ANONYMIZEIP_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AnonymizeIpActivated']));
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Analytics ID saved.', 'ga-mu-async') ?></p></div>
         <?php }	?>
@@ -85,18 +86,18 @@ if ( !function_exists('ga_mu_plugin_options') ) :
 					value="<?php echo get_option(UAID_OPTION); ?>" /> <?php _e('ex. UA-01234567-8', 'ga-mu-async') ?></td>
 				</tr>
                                 <tr>
-						<td style="padding-bottom: 18px;"><?php _e('Anonymize IPs', 'ga-mu-async') ?>:</td>
-						<td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
-						<?php
-						$anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
-						restore_current_blog();
-						if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
-							echo 'checked="checked"';
-						}
-						?>
-						 /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-						<?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
-					</tr>
+                                        <td style="padding-bottom: 18px;"><?php _e('Anonymize IPs', 'ga-mu-async') ?>:</td>
+                                        <td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
+                                        <?php
+                                        $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                                        restore_current_blog();
+                                        if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
+                                                echo 'checked="checked"';
+                                        }
+                                        ?>
+                                         /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+                                        <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
+                                </tr>
 				<tr>
 					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'ga-mu-async') ?>" /></td>
 				</tr>
@@ -134,10 +135,17 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 				else {
 					$allowSiteSpecificAccounts = 0;
 				}
+                                if (isset($_POST['AllowSiteSpecificAccounts'])) {
+					$AnonymizeIpActivated = 1;
+				}
+				else {
+					$AnonymizeIpActivated = 0;
+				}
 				switch_to_blog(MAIN_BLOG_ID);
 				update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAIDsuper']));
                                 update_option(MAINDOMAIN_OPTION, preg_replace('/[^a-zA-Z\d\-\.]/','',$_POST['MainDomain']));
                                 update_option(SITE_SPECIFIC_ALLOWED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AllowSiteSpecificAccounts']));
+                                update_option(ANONYMIZEIP_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AnonymizeIpActivated']));
 				restore_current_blog();
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Network settings saved.', 'ga-mu-async') ?></p></div>
@@ -183,6 +191,21 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 						<?php _e('If this is disallowed the Google Analytics settings page will not be visible to site admins.', 'ga-mu-async')?><br>
 						<?php _e('That means they will not be able to use their own Google Analytics accounts to track statistics.', 'ga-mu-async')?></p></td>
 					</tr>
+                                        <tr>
+                                                <td style="padding-bottom: 18px;"><?php _e('Anonymize IPs for Network-Tracking', 'ga-mu-async') ?>:</td>
+                                                <td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
+                                                <?php
+                                                switch_to_blog(MAIN_BLOG_ID);
+                                                $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                                                restore_current_blog();
+                                                if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
+                                                        echo 'checked="checked"';
+                                                }
+                                                ?>
+                                                 /> <?php _e('Activated', 'ga-mu-async') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
+                                                <?php _e('This option activates IP-Anonymization for the network domain on the main site and all subsites.', 'ga-mu-async')?><br>
+                                                <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'ga-mu-async')?></td>
+                                        </tr>
 				<?php } ?>
 				<tr>
 					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'ga-mu-async') ?>" /></td>
@@ -204,12 +227,13 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		switch_to_blog(MAIN_BLOG_ID);
 		$uaidsuper = get_option(UAID_OPTION);
 		$maindomain = get_option(MAINDOMAIN_OPTION);
-                $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                $anonymizeIpNetwork = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
 		$siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
 		restore_current_blog();
 
 		$uaid = get_option(UAID_OPTION);
-		
+		$anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                
 		$super = false;
 		$user = false;
 		
@@ -248,7 +272,7 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 					} ?>
 					_gaq.push(['_trackPageview']);
 					<?php
-					if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
+					if (isset($anonymizeIpNetwork) && $anonymizeIpNetwork != '' && $anonymizeIpNetwork != '0')
 					{ ?>
 					_gaq.push(['_gat._anonymizeIp']);
 					<?php
@@ -260,7 +284,11 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 					?>
 					_gaq.push(['<?php echo $prefix ?>_setAccount', '<?php echo $uaid ?>']);
 					_gaq.push(['<?php echo $prefix ?>_trackPageview']);
+                                        <?php if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
+					{ ?>
+					_gaq.push(['<?php echo $prefix ?>_gat._anonymizeIp']);
 					<?php
+					}
 				}
 				?>
 				(function() {
