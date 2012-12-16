@@ -10,6 +10,7 @@
 ### WordPress
 * Requires at least: 3.1
 * Tested up to: 3.5
+* Current stable release: 2.2.1
 
 ### About
 * Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Niklas Jonsson](http://www.darturonline.se/ga-mu-async.html)

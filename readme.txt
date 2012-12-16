@@ -31,14 +31,17 @@ Network admins can setup network-wide GA tracking and give individual site owner
 * Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
 = Development =
-Contribute Code at [https://github.com/Foe-Services-Labs/Google-Analytics-MU](https://github.com/Foe-Services-Labs/Google-Analytics-MU)
-Contribute Translations at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
+* Contribute Code at [https://github.com/Foe-Services-Labs/Google-Analytics-MU](https://github.com/Foe-Services-Labs/Google-Analytics-MU)
+* Contribute Translations at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
+
+* Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by Niklas Jonsson (Dartur): http://darturonline.se/ga_mu_async.html
 
 = Developers =
 * Christian Foellmann (cfoellmann): [Github](https://github.com/cfoellmann) | [WordPress.org](https://profiles.wordpress.org/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
 * Foe Services Labs (foe-services-labs): [Github](https://github.com/Foe-Services-Labs) | [WordPress.org](https://profiles.wordpress.org/foe-services-labs) | [Web](http://labs.foe-services.de) | [Mail](mailto:labs@foe-services.de)
 
-= Contributions are always welcome! Please fork at GitHub and use "Pull Requests" =
+= Contributions are always welcome! =
+__Please fork at GitHub and use "Pull Requests"__
 
 == Installation ==
 
