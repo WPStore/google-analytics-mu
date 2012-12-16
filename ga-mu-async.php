@@ -3,14 +3,15 @@
 Plugin Name: Google Analytics MU
 Plugin URI: https://github.com/foe-services/google-analytics-mu
 Description: Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
-Version: 2.1
+Version: 2.2.1
 Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
 License: GPL2
 */
 ?>
 <?php
-/*  Copyright 2011  Niklas Jonsson  (email : niklas@darturonline.se)
+/*  Copyright 2012  Foe Services Labs (http://labs.foe-services.de)
+    Copyright 2011-12  Niklas Jonsson  (email : niklas@darturonline.se)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 

@@ -1,9 +1,9 @@
-=== Plugin Name ===
-Contributors: foe-services-labs, cfoellmann
+=== Google Analytics MU ===
+Contributors: Foe Services Labs, cfoellmann
 Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 2.2
+Stable tag: 2.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,92 +11,68 @@ Network admins can setup network-wide GA tracking and give individual site owner
 
 == Description ==
 
-= sdf =
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+= WP requirements =
+* WordPress multisite installations __ONLY__
+* WordPress version >= 3.0.1 (keep your installation updated for security reasons!!)
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+= Features =
+* track the whole network with one Google Analytics UA code
+* let individual site owners track their site with their on UA code (optional, set by the network admin panel)
+* track Google PageSpeed (optional) (network-wide + site-specific)
+* collect data with anonymized IPs (optional) (network-wide + site-specific)
 
-A few notes about the sections above:
+= Languages =
+* English (development language -> active)
+* German (active)
+* Swedish (outdated)
+* Dutch (outdated)
+* Persian (outdated)
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+* Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+= Development =
+Contribute Code at [https://github.com/Foe-Services-Labs/Google-Analytics-MU](https://github.com/Foe-Services-Labs/Google-Analytics-MU)
+Contribute Translations at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+= Developers =
+* Christian Foellmann (cfoellmann): [Github](https://github.com/cfoellmann) | [WordPress.org](https://profiles.wordpress.org/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
+* Foe Services Labs (foe-services-labs): [Github](https://github.com/Foe-Services-Labs) | [WordPress.org](https://profiles.wordpress.org/foe-services-labs) | [Web](http://labs.foe-services.de) | [Mail](mailto:labs@foe-services.de)
+
+= Contributions are always welcome! Please fork at GitHub and use "Pull Requests" =
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+The plugin has no special install instructions.
+Just install via wp-admin by searching for 'Google Analytics MU'
 
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+= Updates =
+Just update via wp-admin when an update is announced
 
 == Frequently Asked Questions ==
 
 = What features or changes are planned for the furure? =
+Have a look at the [Roadmap](https://github.com/Foe-Services-Labs/Google-Analytics-MU#roadmap) at GitHub
 
+= Where can I get help? =
+Post help requests in the [Support](http://wordpress.org/support/plugin/google-analytics-mu) section here at WordPress.org.
+For feature requests or technical/code issues please use the [Issue tracker at GitHub](https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues)!
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1.
 
 == Changelog ==
 
+= 2.2 =
+* First published version on WordPress.org
+* ADDED FEATURE 'autoupdate' via wordpress.org (v2.2)
+
 = 2.1 =
+* ADDED FEATURE '_trackPageLoadTime' (v2.1)
+* ADDED FEATURE '_anonymizeIp()' (v2.1)
 
 = 2.0 =
 * Forking of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Dartus](https://profiles.wordpress.org/Dartur/)
 * Git-Mirror = Upstream: [https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async](https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async) 
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* FIX XSS vulnerability (by Dan Collis-Puro) (v2.0)
+* FIX language support (v2.0)
