@@ -63,6 +63,10 @@ For feature requests or technical/code issues please use the [Issue tracker at G
 
 == Changelog ==
 
+= 2.2.1 =
+* non critical update
+* correcting some versioning errors
+
 = 2.2 =
 * First published version on WordPress.org
 * ADDED FEATURE 'autoupdate' via wordpress.org (v2.2)
