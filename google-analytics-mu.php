@@ -81,7 +81,8 @@ if ( !function_exists('ga_mu_plugin_options') ) :
         <?php }	?>
 			    	
 		<div class="wrap">
-			<h2><?php _e('Google Analytics Statistics', 'google-analytics-mu') ?></h2>
+                        <?php screen_icon( 'plugins' ); ?>
+			<h2><?php _e('Google Analytics Settings', 'google-analytics-mu') ?></h2>
 			<form name="form" action="" method="post">
 			<table style="margin-top: 20px;">			
 				<tr>
@@ -177,7 +178,8 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 			<?php }	} ?>
 		
 		<div class="wrap">
-			<h2><?php _e('Google Analytics Statistics', 'google-analytics-mu') ?></h2>
+                        <?php screen_icon( 'plugins' ); ?>
+			<h2><?php _e('Google Analytics Network Settings', 'google-analytics-mu') ?></h2>
 			<form name="form" action="" method="post">
 			<table style="margin-top: 20px;">
 			<?php
