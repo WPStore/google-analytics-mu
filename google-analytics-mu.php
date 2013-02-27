@@ -7,12 +7,10 @@ Version:        2.3
 Author:         Foe Services Labs
 Author URI:     http://labs.foe-services.de
 License:        GPL2
-
 Text Domain:    google-analytics-mu
 Domain Path:    /languages/
 */
-?>
-<?php
+
 /*  Copyright 2012  Foe Services Labs (http://labs.foe-services.de)
     Copyright 2011-12  Niklas Jonsson  (email : niklas@darturonline.se)
 
@@ -29,8 +27,6 @@ Domain Path:    /languages/
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-?>
-<?php
 
 add_action('network_admin_menu', 'ga_mu_plugin_network_menu');
 add_action('admin_menu', 'ga_mu_plugin_menu');
@@ -45,7 +41,7 @@ define('MAIN_BLOG_ID',1);
 
 if ( !function_exists('ga_mu_plugin_network_menu') ) :
 	function ga_mu_plugin_network_menu() {
-		add_submenu_page( 'settings.php', __('Google Analytics', 'google-analytics-mu'), __('Google Analytics', 'google-analytics-mu'), 'manage_network', 'ga-mu-plugin-network-id', 'ga_mu_plugin_network_options');
+		add_submenu_page( 'settings.php', __('Google Analytics', 'google-analytics-mu'), __('Google Analytics', 'google-analytics-mu'), 'manage_network', 'google-analytics-mu-network', 'google_analytics_mu_network_options');
 	}
 endif;
 
@@ -55,13 +51,13 @@ if ( !function_exists('ga_mu_plugin_menu') ) :
 		$siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
 		restore_current_blog();
 		if (isset($siteSpecificAllowed) && $siteSpecificAllowed != '' && $siteSpecificAllowed != '0') {
-			add_options_page( __('Google Analytics', 'google-analytics-mu'), __('Google Analytics', 'google-analytics-mu'), 'manage_options', 'ga-mu-plugin-id', 'ga_mu_plugin_options');
+			add_options_page( __('Google Analytics', 'google-analytics-mu'), __('Google Analytics', 'google-analytics-mu'), 'manage_options', 'google-analytics-mu', 'google_analytics_mu_options');
 		}
 	}
 endif;
 
-if ( !function_exists('ga_mu_plugin_options') ) :
-	function ga_mu_plugin_options() {
+if ( !function_exists('google_analytics_mu_options') ) :
+	function google_analytics_mu_options() {
 		
 		global $blog_id;
                 
@@ -81,22 +77,31 @@ if ( !function_exists('ga_mu_plugin_options') ) :
         <?php }	?>
 			    	
 		<div class="wrap">
+                    <style>
+                        .indent {padding-left: 2em}
+                        h4 {margin-bottom: 0;}
+                    </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Settings', 'google-analytics-mu') ?></h2>
 			<form name="form" action="" method="post">
-			<table style="margin-top: 20px;">			
-				<tr>
-					<td style="padding-bottom: 18px;"><?php _e('Google Analytics ID', 'google-analytics-mu') ?>:</td>
-					<td style="padding-bottom: 18px;"><input type="text" id="UAID" name="UAID"
+                            <ul>
+                                <li>
+                                    <h4><?php _e('Google Analytics Property-ID', 'google-analytics-mu') ?>:</h4>
+                                    <p class="indent">
+                                        <input type="text" id="UAID" name="UAID"
 					<?php 
 					if ($blog_id == MAIN_BLOG_ID) {
 						echo 'disabled="disabled"';
 					} ?>
-					value="<?php echo get_option(UAID_OPTION); ?>" /> <?php _e('ex. UA-01234567-8', 'google-analytics-mu') ?></td>
-				</tr>
-                                <tr>
-                                        <td style="padding-bottom: 18px;"><?php _e('Anonymize IPs', 'google-analytics-mu') ?>:</td>
-                                        <td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
+					value="<?php echo get_option(UAID_OPTION); ?>" placeholder="UA-01234567-8"/>
+                                        <?php _e('Format: UA-01234567-8', 'google-analytics-mu')?>
+                                    </p>
+                                    <p class="indent"><?php printf( __('Go to your %s to find your Property-ID', 'google-analytics-mu'), '<a href="https://www.google.com/analytics/web/" target="_blank">' . __('Google Analytics Dashboard', 'google-analytics-mu') . '</a>') ?></p>
+                                </li>
+                                <li>
+                                    <h4><?php _e('Anonymize IPs', 'google-analytics-mu') ?>:</h4>
+                                    <p class="indent">
+                                        <input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
                                         <?php
                                         $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
                                         restore_current_blog();
@@ -104,12 +109,16 @@ if ( !function_exists('ga_mu_plugin_options') ) :
                                                 echo 'checked="checked"';
                                         }
                                         ?>
-                                         /> <?php _e('Activated', 'google-analytics-mu') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-                                        <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'google-analytics-mu')?></td>
-                                </tr>
-                                <tr>
-                                        <td style="padding-bottom: 18px;"><?php _e('Google PageSpeed', 'google-analytics-mu') ?>:</td>
-                                        <td style="padding-bottom: 18px;"><input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
+                                         /> <?php _e('Activated', 'google-analytics-mu') ?>
+                                    </p>
+                                    <p class="indent">
+                                        <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'google-analytics-mu')?>
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4><?php _e('Google PageSpeed', 'google-analytics-mu') ?>:</h4>
+                                    <p class="indent">
+                                        <input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
                                         <?php
                                         $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
                                         restore_current_blog();
@@ -117,27 +126,30 @@ if ( !function_exists('ga_mu_plugin_options') ) :
                                                 echo 'checked="checked"';
                                         }
                                         ?>
-                                         /> <?php _e('Activated', 'google-analytics-mu') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-                                        <?php _e('Activate to track performance via Google PageSpeed.', 'google-analytics-mu')?></td>
-                                </tr>
-				<tr>
-					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" /></td>
-				</tr>
-				</table>
-				<p>
-					<?php
+                                         /> <?php _e('Activated', 'google-analytics-mu') ?>
+                                    </p>
+                                    <p class="indent">
+                                        <?php _e('Activate to track performance via Google PageSpeed.', 'google-analytics-mu')?>
+                                    </p>
+                                </li>
+                                <p>
+                                    <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" />
+                                </p>
+                                <p>
+                                    <?php
 					if ($blog_id == MAIN_BLOG_ID) {
 						_e('As this is the main blog it uses the same ID as the network do. Changing this would change the networkwide ID; that is why it is disabled here.', 'google-analytics-mu');
-					} ?>
-				</p>
+                                    } ?>
+                                </p>
+                            </ul>
 			</form>
 		</div>
 		<?php }
 endif;
 
 
-if ( !function_exists('ga_mu_plugin_network_options') ) :
-	function ga_mu_plugin_network_options() {
+if ( !function_exists('google_analytics_mu_network_options') ) :
+	function google_analytics_mu_network_options( $active_tab = '' ) {
 	
 		load_plugin_textdomain('google-analytics-mu', null, '/google-analytics-mu/languages/');
 		
@@ -178,81 +190,155 @@ if ( !function_exists('ga_mu_plugin_network_options') ) :
 			<?php }	} ?>
 		
 		<div class="wrap">
+                        <style>
+                            .indent {padding-left: 2em}
+                            h4 {margin-bottom: 0;}
+                        </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Network Settings', 'google-analytics-mu') ?></h2>
-			<form name="form" action="" method="post">
-			<table style="margin-top: 20px;">
-			<?php
-				if (current_user_can('manage_network'))  {
-					?>
-					<tr>
-						<td style="padding-bottom: 18px;"><?php _e('Network Google Analytics ID', 'google-analytics-mu') ?>:</td>
-						<td style="padding-bottom: 18px;"><input type="text" id="UAIDsuper" name="UAIDsuper" value="<?php 
-						switch_to_blog(MAIN_BLOG_ID);
-						echo get_option(UAID_OPTION);
-						restore_current_blog();
-						?>" /> 
-						<?php _e('ex. UA-01234567-8', 'google-analytics-mu')?></td>
-					</tr>
-					<tr>
-						<td style="padding-bottom: 18px;"><?php _e('Network domain', 'google-analytics-mu') ?>:</td>
-						<td style="padding-bottom: 18px;"><input type="text" id="MainDomain" name="MainDomain" value="<?php 
-						switch_to_blog(MAIN_BLOG_ID);
-						echo get_option(MAINDOMAIN_OPTION);
-						restore_current_blog();
-						?>" /> 
-						<?php _e('ex. ".mydomain.com". Obs! start with a dot! This value goes into', 'google-analytics-mu')?> _gaq.push(['_setDomainName', 'NETWORK_DOMAIN'])</td>
-					</tr>
-					<tr>
-						<td style="padding-bottom: 18px;"><?php _e('Site specific accounts', 'google-analytics-mu') ?>:</td>
-						<td style="padding-bottom: 18px;"><input type="checkbox" id="AllowSiteSpecificAccounts" name="AllowSiteSpecificAccounts" value="Allowed"
-						<?php
-						switch_to_blog(MAIN_BLOG_ID);
-						$siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
-						restore_current_blog();
-						if (isset($siteSpecificAllowed) && $siteSpecificAllowed != '' && $siteSpecificAllowed != '0') {
-							echo 'checked="checked"';
-						}
-						?>
-						 /> <?php _e('Allowed', 'google-analytics-mu') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-						<?php _e('If this is disallowed the Google Analytics settings page will not be visible to site admins.', 'google-analytics-mu')?><br>
-						<?php _e('That means they will not be able to use their own Google Analytics accounts to track statistics.', 'google-analytics-mu')?></p></td>
-					</tr>
-                                        <tr>
-                                                <td style="padding-bottom: 18px;"><?php _e('Anonymize IPs for Network-Tracking', 'google-analytics-mu') ?>:</td>
-                                                <td style="padding-bottom: 18px;"><input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
-                                                <?php
-                                                switch_to_blog(MAIN_BLOG_ID);
-                                                $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
-                                                restore_current_blog();
-                                                if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
-                                                        echo 'checked="checked"';
-                                                }
-                                                ?>
-                                                 /> <?php _e('Activated', 'google-analytics-mu') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-                                                <?php _e('This option activates IP-Anonymization for the network domain on the main site and all subsites.', 'google-analytics-mu')?><br>
-                                                <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'google-analytics-mu')?></td>
-                                        </tr>
-                                        <tr>
-                                                <td style="padding-bottom: 18px;"><?php _e('Google PageSpeed', 'google-analytics-mu') ?>:</td>
-                                                <td style="padding-bottom: 18px;"><input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
-                                                <?php
-                                                switch_to_blog(MAIN_BLOG_ID);
-                                                $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
-                                                restore_current_blog();
-                                                if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0') {
-                                                        echo 'checked="checked"';
-                                                }
-                                                ?>
-                                                 /> <?php _e('Activated', 'google-analytics-mu') ?> <p style="display:inline-block; vertical-align:middle;margin-left:80px;">
-                                                <?php _e('Activate to track network-wide performance via Google PageSpeed.', 'google-analytics-mu')?></td>
-                                        </tr>
-				<?php } ?>
-				<tr>
-					<td>&nbsp;</td><td><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" /></td>
-				</tr>
-				</table>
-			</form>
+                        
+                        <?php
+                        if (isset($_GET['tab'])) {
+                            $active_tab = $_GET['tab'];
+                        } else if ($active_tab == 'about') {
+                            $active_tab = 'about';
+                        } else {
+                            $active_tab = 'network-settings';
+                        } // end if/else 
+                        ?>
+                        
+                        <h2 class="nav-tab-wrapper">
+                            <a href="?page=google-analytics-mu-network&tab=network-settings" class="nav-tab <?php echo $active_tab == 'network-settings' ? 'nav-tab-active' : ''; ?>"><?php _e('Network-Settings', 'google-analytics-mu'); ?></a>
+                            <a href="?page=google-analytics-mu-network&tab=about" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>"><?php _e('About', 'google-analytics-mu'); ?></a>
+                        </h2>
+
+			<?php if (current_user_can('manage_network') && $active_tab == 'about') { ?>
+                            <div class="wrap indent">
+
+                                <h1>Google Analytics MU - WordPress Plugin</h1>
+                                <p>
+                                    <a href="https://wordpress.org/extend/plugins/google-analytics-mu/" target="_blank">WordPress.org</a> | 
+                                    <a href="https://github.com/Foe-Services-Labs/Google-Analytics-MU/" target="_blank">GitHub Repository</a> | 
+                                    <a href="https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues" target="_blank">Issue Tracker</a>
+                                </p>
+
+                                <h3><?php _e('About', 'google-analytics-mu'); ?></h3>
+                                <ul>
+                                    <li>Fork of <a href="https://wordpress.org/extend/plugins/google-analytics-multisite-async/" target="_blank">Google Analytics Multisite Async</a> by <a href="http://www.darturonline.se/ga-mu-async.html" target="_blank">Niklas Jonsson</a></li>
+                                    <li>Upstream: <a href="https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async" target="_blank">Foe-Services-Mirrors / google-analytics-multisite-async</a> - Synced Git-Mirror of the official SVN-repo</li>
+                                </ul>
+
+                                <h3><?php _e('Development', 'google-analytics-mu'); ?></h3>
+                                <ul>
+                                    <li><?php _e('Main Developer', 'google-analytics-mu'); ?>: <a href="http://labs.foe-services.com/" target="_blank">Foe Services Labs</a> | <a href="https://github.com/Foe-Services-Labs/" target="_blank">Foe Services Labs@GitHub</a> | <a href="http://profiles.wordpress.org/foe-services-labs" target="_blank">Foe Services Labs@WP.org</a></li>
+                                </ul>
+
+                                <h3>WordPress</h3>
+                                <ul>
+                                    <li><?php printf( __('Requires at least: %s', 'google-analytics-mu'), '3.0.1'); ?></li>
+                                    <li><?php printf( __('Tested up to: %s', 'google-analytics-mu'), '3.5.1'); ?></li>
+                                </ul>
+
+                                <h3><?php _e('Languages', 'google-analytics-mu'); ?></h3>
+                                <ul>
+                                    <li><?php _e('English'); ?></li>
+                                    <li><?php _e('German'); ?></li>
+                                </ul>
+                                <p><?php printf( __('Help to translate at %s', 'google-analytics-mu'), '<a href="https://translate.foe-services.de/projects/google-analytics-mu" target="_blank">https://translate.foe-services.de/projects/google-analytics-mu</a>'); ?></p>
+
+                                <h3><?php _e('License', 'google-analytics-mu'); ?></h3> <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a>
+
+                            </div><!-- /.wrap --> 
+					
+                        <?php } elseif (current_user_can('manage_network')) { ?>
+                            <div class="wrap">
+                            <form name="form" action="" method="post">
+                                <ul>
+                                    <li>
+                                        <h4><?php _e('Network Google Analytics Property-ID', 'google-analytics-mu') ?>:</h4>
+                                        <p class="indent">
+                                            <input type="text" id="UAIDsuper" name="UAIDsuper" value="<?php 
+                                            switch_to_blog(MAIN_BLOG_ID);
+                                            echo get_option(UAID_OPTION);
+                                            restore_current_blog();
+                                            ?>" placeholder="UA-01234567-8"/>
+                                            <?php _e('Format: UA-01234567-8', 'google-analytics-mu')?>
+                                        </p>
+                                        <p class="indent"><?php printf( __('Go to your %s to find your Property-ID', 'google-analytics-mu'), '<a href="https://www.google.com/analytics/web/" target="_blank">' . __('Google Analytics Dashboard', 'google-analytics-mu') . '</a>') ?></p>
+                                    </li>
+                                    <li>
+                                        <h4><?php _e('Network domain', 'google-analytics-mu') ?>:</h4>
+                                        <p class="indent">
+                                            <input type="text" id="MainDomain" name="MainDomain" value="<?php 
+                                            switch_to_blog(MAIN_BLOG_ID);
+                                            echo get_option(MAINDOMAIN_OPTION);
+                                            restore_current_blog();
+                                            ?>" /> 
+                                            <?php _e('ex. ".mydomain.com"', 'google-analytics-mu')?>
+                                        </p>
+                                        <p class="indent">
+                                            <?php printf( __('Start with a dot! This value goes into %s', 'google-analytics-mu'), "<i>_gaq.push(['_setDomainName', 'NETWORK_DOMAIN'])</i>"); ?> 
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h4><?php _e('Site specific accounts', 'google-analytics-mu') ?>:</h4>
+                                        <p class="indent">
+                                            <input type="checkbox" id="AllowSiteSpecificAccounts" name="AllowSiteSpecificAccounts" value="Allowed"
+                                            <?php
+                                            switch_to_blog(MAIN_BLOG_ID);
+                                            $siteSpecificAllowed = get_option(SITE_SPECIFIC_ALLOWED_OPTION);
+                                            restore_current_blog();
+                                            if (isset($siteSpecificAllowed) && $siteSpecificAllowed != '' && $siteSpecificAllowed != '0') {
+                                                    echo 'checked="checked"';
+                                            }
+                                            ?>
+                                             /> <?php _e('Allowed', 'google-analytics-mu') ?>
+                                        </p>
+                                        <p class="indent">
+                                            <?php _e('If this is disallowed the Google Analytics settings page will not be visible to site admins.', 'google-analytics-mu')?><br>
+                                            <?php _e('That means they will not be able to use their own Google Analytics accounts to track statistics.', 'google-analytics-mu')?>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h4><?php _e('Anonymize IPs for Network-Tracking', 'google-analytics-mu') ?>:</h4>
+                                        <p class="indent">
+                                            <input type="checkbox" id="AnonymizeIpActivated" name="AnonymizeIpActivated" value="Activated"
+                                            <?php
+                                            switch_to_blog(MAIN_BLOG_ID);
+                                            $anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
+                                            restore_current_blog();
+                                            if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0') {
+                                                    echo 'checked="checked"';
+                                            }
+                                            ?>
+                                             /> <?php _e('Activated', 'google-analytics-mu') ?>
+                                        </p>
+                                        <p class="indent">
+                                            <?php _e('This option activates IP-Anonymization for the network domain on the main site and all subsites.', 'google-analytics-mu')?><br>
+                                            <?php _e('If AnonymizeIP is activated all tracked IPs will be saved in shortened form.', 'google-analytics-mu')?>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h4><?php _e('Google PageSpeed', 'google-analytics-mu') ?>:</h4>
+                                        <p class="indent">
+                                            <input type="checkbox" id="PageSpeedActivated" name="PageSpeedActivated" value="Activated"
+                                            <?php
+                                            switch_to_blog(MAIN_BLOG_ID);
+                                            $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
+                                            restore_current_blog();
+                                            if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0') {
+                                                    echo 'checked="checked"';
+                                            }
+                                            ?>
+                                             /> <?php _e('Activated', 'google-analytics-mu') ?>
+                                        </p>
+                                        <p class="indent"><?php _e('Activate to track network-wide performance via Google PageSpeed.', 'google-analytics-mu')?></p>
+                                    </li>
+                                </ul>
+                                <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" /></p>
+                            </form>
+                            </div><!-- /.wrap --> 
+                        <?php } ?>
 		</div>		
 		<?php }
 endif;
