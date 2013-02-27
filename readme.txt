@@ -24,9 +24,6 @@ Network admins can setup network-wide GA tracking and give individual site owner
 = Languages =
 * English (development language -> active)
 * German (active)
-* Swedish (outdated)
-* Dutch (outdated)
-* Persian (outdated)
 
 * Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
@@ -57,14 +54,14 @@ Just update via wp-admin when an update is announced
 Have a look at the [Roadmap](https://github.com/Foe-Services-Labs/Google-Analytics-MU#roadmap) at GitHub
 
 = Where can I get help? =
-Post help requests in the [Support](http://wordpress.org/support/plugin/google-analytics-mu) section here at WordPress.org.
-For feature requests or technical/code issues please use the [Issue tracker at GitHub](https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues)!
-
-== Screenshots ==
-
-1.
+Visit the [Issue tracker at GitHub](https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues) to get help and post all other issues.
+Please do not use the support section here at WordPress.org.
 
 == Changelog ==
+
+= 2.3 =
+* ADDED tabbed network settings
+* minor styling improments
 
 = 2.2.1 =
 * non critical update

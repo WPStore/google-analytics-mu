@@ -9,8 +9,8 @@
 
 ### WordPress
 * Requires at least: 3.1
-* Tested up to: 3.5
-* Current stable release: 2.2.1
+* Tested up to: 3.5.1
+* Current stable release: 2.3
 
 ### About
 * Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Niklas Jonsson](http://www.darturonline.se/ga-mu-async.html)
@@ -19,9 +19,6 @@
 ### Languages
 * English (development language -> active)
 * German (active)
-* Swedish (outdated)
-* Dutch (outdated)
-* Persian (outdated)
 
 * Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
@@ -31,12 +28,11 @@
 * ADDED FEATURE '_trackPageLoadTime' (v2.1)
 * ADDED FEATURE '_anonymizeIp()' (v2.1)
 * ADDED FEATURE 'autoupdate' via wordpress.org (v2.2)
+* ADDED tabbed network settings + minor styling improments (v2.3)
 
 ### Roadmap
-* ADD tabbed settings page
 * minified javascript snippet
-
-* ensure compatibility with WordPress in the future
+* change code to OOP
 
 ### Installation (automatic)
 * just install like any other WordPress Plugin via the wp control-panel
