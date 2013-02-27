@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Google Analytics MU package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-02-27 11:33:38+0000\n"
+"PO-Revision-Date: 2013-02-27 11:41:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -47,14 +47,6 @@ msgstr "Getestet bis: %s"
 #: google-analytics-mu.php:242
 msgid "Languages"
 msgstr "Sprachen"
-
-#: google-analytics-mu.php:244
-msgid "English"
-msgstr "Englisch"
-
-#: google-analytics-mu.php:245
-msgid "German"
-msgstr "Deutsch"
 
 #: google-analytics-mu.php:247
 msgid "Help to translate at %s"

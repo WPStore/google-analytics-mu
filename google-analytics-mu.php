@@ -133,7 +133,7 @@ if ( !function_exists('google_analytics_mu_options') ) :
                                     </p>
                                 </li>
                                 <p>
-                                    <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes') ?>" />
+                                    <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
                                 </p>
                                 <p>
                                     <?php
@@ -241,8 +241,8 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
 
                                 <h3><?php _e('Languages', 'google-analytics-mu'); ?></h3>
                                 <ul>
-                                    <li><?php _e('English'); ?></li>
-                                    <li><?php _e('German'); ?></li>
+                                    <li>English</li>
+                                    <li>German</li>
                                 </ul>
                                 <p><?php printf( __('Help to translate at %s', 'google-analytics-mu'), '<a href="https://translate.foe-services.de/projects/google-analytics-mu" target="_blank">https://translate.foe-services.de/projects/google-analytics-mu</a>'); ?></p>
 
@@ -335,7 +335,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                         <p class="indent"><?php _e('Activate to track network-wide performance via Google PageSpeed.', 'google-analytics-mu')?></p>
                                     </li>
                                 </ul>
-                                <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes') ?>" /></p>
+                                <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e( 'Save Changes') ?>" /></p>
                             </form>
                             </div><!-- /.wrap --> 
                         <?php } ?>

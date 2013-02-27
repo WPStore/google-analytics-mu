@@ -112,14 +112,6 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: google-analytics-mu.php:244
-msgid "English"
-msgstr ""
-
-#: google-analytics-mu.php:245
-msgid "German"
-msgstr ""
-
 #: google-analytics-mu.php:247
 msgid "Help to translate at %s"
 msgstr ""
