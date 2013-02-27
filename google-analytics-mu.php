@@ -133,7 +133,7 @@ if ( !function_exists('google_analytics_mu_options') ) :
                                     </p>
                                 </li>
                                 <p>
-                                    <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" />
+                                    <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes') ?>" />
                                 </p>
                                 <p>
                                     <?php
@@ -335,7 +335,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                         <p class="indent"><?php _e('Activate to track network-wide performance via Google PageSpeed.', 'google-analytics-mu')?></p>
                                     </li>
                                 </ul>
-                                <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes', 'google-analytics-mu') ?>" /></p>
+                                <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save changes') ?>" /></p>
                             </form>
                             </div><!-- /.wrap --> 
                         <?php } ?>
