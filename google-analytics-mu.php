@@ -274,7 +274,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                             echo get_option(MAINDOMAIN_OPTION);
                                             restore_current_blog();
                                             ?>" /> 
-                                            <?php _e('ex. ".mydomain.com"', 'google-analytics-mu')?>
+                                            <?php _e('Format: ".mydomain.com"', 'google-analytics-mu')?>
                                         </p>
                                         <p class="indent">
                                             <?php printf( __('Start with a dot! This value goes into %s', 'google-analytics-mu'), "<i>_gaq.push(['_setDomainName', 'NETWORK_DOMAIN'])</i>"); ?> 
