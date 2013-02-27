@@ -1,18 +1,18 @@
 <?php
 /*
 Plugin Name:    Google Analytics MU
-Plugin URI:     https://github.com/foe-services/google-analytics-mu
+Plugin URI:     https://wordpress.org/extend/plugins/google-analytics-mu/
 Description:    Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
 Version:        2.3
 Author:         Foe Services Labs
 Author URI:     http://labs.foe-services.de
-License:        GPL2
+License:        GPLv2
+License URI:    http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:    google-analytics-mu
 Domain Path:    /languages/
-*/
 
-/*  Copyright 2012  Foe Services Labs (http://labs.foe-services.de)
-    Copyright 2011-12  Niklas Jonsson  (email : niklas@darturonline.se)
+    Copyright 2012-2013  Foe Services Labs (http://labs.foe-services.de)
+    Copyright 2011-2012  Niklas Jonsson  (email : niklas@darturonline.se)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -246,7 +246,10 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                 </ul>
                                 <p><?php printf( __('Help to translate at %s', 'google-analytics-mu'), '<a href="https://translate.foe-services.de/projects/google-analytics-mu" target="_blank">https://translate.foe-services.de/projects/google-analytics-mu</a>'); ?></p>
 
-                                <h3><?php _e('License', 'google-analytics-mu'); ?></h3> <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a>
+                                <h3><?php _e('License', 'disable-comments'); ?></h3> 
+                                <ul>
+                                    <li><a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a></li>
+                                </ul>
 
                             </div><!-- /.wrap --> 
 					
