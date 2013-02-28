@@ -385,55 +385,43 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		{
                 $prefix = ''
                 ?>
-                <script type="text/javascript">
-                var _gaq = _gaq || [];
-                <?php
-                if ($super) {
-                        ?>
-                        _gaq.push(['_setAccount', '<?php echo $uaidsuper ?>']);
-                        <?php
-                        if ($maindomain)
-                        { ?>
-                        _gaq.push(['_setDomainName', '<?php echo $maindomain ?>']);
-                        <?php
-                        } ?>
-                        _gaq.push(['_trackPageview']);
-                        <?php 
-                        if (isset($PageSpeedNetwork) && $PageSpeedNetwork != '' && $PageSpeedNetwork != '0')
-                        { ?>
-                        _gaq.push(['_trackPageLoadTime']);
-                        <?php }
-                        if (isset($anonymizeIpNetwork) && $anonymizeIpNetwork != '' && $anonymizeIpNetwork != '0')
-                        { ?>
-                        _gaq.push(['_gat._anonymizeIp']);
-                        <?php
-                        }                                        
-                        $prefix = 'b.';
-                }
-
-                if ($user) {
-                        ?>
-                        _gaq.push(['<?php echo $prefix ?>_setAccount', '<?php echo $uaid ?>']);
-                        _gaq.push(['<?php echo $prefix ?>_trackPageview']);
-                        <?php
-                        if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0')
-                        { ?>
-                            _gaq.push(['<?php echo $prefix ?>_trackPageLoadTime']);
-                        <?php }
-                        if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
-                        { ?>
-                        _gaq.push(['<?php echo $prefix ?>_gat._anonymizeIp']);
-                        <?php
-                        }
-                }
-                ?>
-                (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-                  })();
-                </script>			
-                <?php }
-	}
-endif;
-?>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+<?php
+if ($super) { ?>
+_gaq.push(['_setAccount', '<?php echo $uaidsuper ?>']);
+<?php
+if ($maindomain)
+{ ?>
+_gaq.push(['_setDomainName', '<?php echo $maindomain ?>']);
+<?php
+} ?>
+_gaq.push(['_trackPageview']);
+<?php 
+if (isset($PageSpeedNetwork) && $PageSpeedNetwork != '' && $PageSpeedNetwork != '0')
+{ ?>
+_gaq.push(['_trackPageLoadTime']);
+<?php }
+if (isset($anonymizeIpNetwork) && $anonymizeIpNetwork != '' && $anonymizeIpNetwork != '0')
+{ ?>
+_gaq.push(['_gat._anonymizeIp']);
+<?php } $prefix = 'b.'; }
+if ($user) { ?>
+_gaq.push(['<?php echo $prefix ?>_setAccount', '<?php echo $uaid ?>']);
+_gaq.push(['<?php echo $prefix ?>_trackPageview']);
+<?php
+if (isset($PageSpeed) && $PageSpeed != '' && $PageSpeed != '0')
+{ ?>
+    _gaq.push(['<?php echo $prefix ?>_trackPageLoadTime']);
+<?php }
+if (isset($anonymizeIp) && $anonymizeIp != '' && $anonymizeIp != '0')
+{ ?>
+_gaq.push(['<?php echo $prefix ?>_gat._anonymizeIp']);
+<?php } } ?>
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>			
+<?php } } endif; ?>

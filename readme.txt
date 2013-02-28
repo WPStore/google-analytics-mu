@@ -3,7 +3,7 @@ Contributors: Foe Services Labs, cfoellmann
 Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 3.0.1
 Tested up to: 3.5
-Stable tag: 2.2.1
+Stable tag: 2.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,6 +58,8 @@ Visit the [Issue tracker at GitHub](https://github.com/Foe-Services-Labs/Google-
 Please do not use the support section here at WordPress.org.
 
 == Changelog ==
+= 2.3.1 =
+* proper formating (source code styling) for the GA snippet
 
 = 2.3 =
 * ADDED tabbed network settings
