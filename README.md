@@ -8,27 +8,31 @@
 [Foe Services Labs](http://labs.foe-services.de/)
 
 ### WordPress
-* Requires at least: 3.1
+* Requires at least: TODO
 * Tested up to: 3.5.1
-* Current stable release: 2.3
+* Current stable release: [2.4](#TODO+tag2.4)
 
 ### About
 * Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Niklas Jonsson](http://www.darturonline.se/ga-mu-async.html)
 * Upstream: [Foe-Services-Mirrors / google-analytics-multisite-async](https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async) - Synced Git-Mirror of the official SVN-repo
 
 ### Languages
-* English (development language -> active)
+* English (development language)
 * German (active)
 
 * Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
 ### Changelog
-* FIX XSS vulnerability (by Dan Collis-Puro) (v2.0)
-* FIX language support (v2.0)
-* ADDED FEATURE '_trackPageLoadTime' (v2.1)
-* ADDED FEATURE '_anonymizeIp()' (v2.1)
-* ADDED FEATURE 'autoupdate' via wordpress.org (v2.2)
-* ADDED tabbed network settings + minor styling improments (v2.3)
+* 2.3
+ * ADDED tabbed network settings + minor styling improments
+* 2.2
+ * ADDED FEATURE 'autoupdate' via wordpress.org
+* 2.1
+ * ADDED FEATURE '_trackPageLoadTime'
+ * ADDED FEATURE '_anonymizeIp()'
+* 2.0
+ * FIX XSS vulnerability (by Dan Collis-Puro)
+ * FIX language support
 
 ### Roadmap
 * minified javascript snippet
@@ -40,8 +44,7 @@
 ### Update (automatic)
 * just update via the wp control-panel
 
-### License
-License: [GPLv3](https://github.com/Foe-Services-Labs/Google-Analytics-MU/blob/master/LICENSE)
+### License: [GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)
   
 ### Developers
 * Christian Foellmann (cfoellmann): [Github](https://github.com/cfoellmann) | [WordPress.org](https://profiles.wordpress.org/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
