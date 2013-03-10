@@ -83,6 +83,15 @@ if ( !function_exists('google_analytics_mu_options') ) :
                     </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Settings', 'google-analytics-mu') ?></h2>
+                        
+                        <?php if ($blog_id == MAIN_BLOG_ID) { ?>
+                        <div style="border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;background:#feb1b1;border:1px solid #fe9090;color:#820101;font-size:12px;font-weight:bold;height:auto;margin:10px 15px 0 0;font-family:arial;overflow:hidden;padding:4px 10px 6px;" id="update_sb">
+                            <div style="margin:2px 10px 0 0;float:left;line-height:18px;padding-left:22px; padding:10px 10px 10px 30px;">
+                                <?php _e('As this is the main blog it uses the same ID as the network do. Changing this would change the networkwide ID; that is why it is disabled here.', 'google-analytics-mu'); ?>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        
 			<form name="form" action="" method="post">
                             <ul>
                                 <li>
@@ -135,12 +144,6 @@ if ( !function_exists('google_analytics_mu_options') ) :
                                 <p>
                                     <input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
                                 </p>
-                                <p>
-                                    <?php
-					if ($blog_id == MAIN_BLOG_ID) {
-						_e('As this is the main blog it uses the same ID as the network do. Changing this would change the networkwide ID; that is why it is disabled here.', 'google-analytics-mu');
-                                    } ?>
-                                </p>
                             </ul>
 			</form>
 		</div>
@@ -190,9 +193,14 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
 			<?php }	} ?>
 		
 		<div class="wrap">
-                        <style>
+                        <style type="text/css">
+                            .tab-body {
+                                padding: 10px;
+                                border-style: solid;
+                                border-width: 0 1px 1px 1px;
+                                border-color: #CCCCCC;
+                            }
                             .indent {padding-left: 2em}
-                            h4 {margin-bottom: 0;}
                         </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Network Settings', 'google-analytics-mu') ?></h2>
@@ -213,7 +221,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                         </h2>
 
 			<?php if (current_user_can('manage_network') && $active_tab == 'about') { ?>
-                            <div class="wrap indent">
+                            <div class="tab-body">
 
                                 <h1>Google Analytics MU - WordPress Plugin</h1>
                                 <p>
@@ -254,7 +262,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                             </div><!-- /.wrap --> 
 					
                         <?php } elseif (current_user_can('manage_network')) { ?>
-                            <div class="wrap">
+                            <div class="tab-body">
                             <form name="form" action="" method="post">
                                 <ul>
                                     <li>
