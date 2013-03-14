@@ -8,6 +8,7 @@ Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Network: true
 Text Domain: google-analytics-mu
 Domain Path: /languages
 
