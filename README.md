@@ -1,55 +1,73 @@
-## Google Analytics MU - WordPress Plugin
+# Google Analytics MU - WordPress Plugin
+__Provides info to site admins as to which plugins are activated sitewide, and which blogs plugins are activated on.__
 
-[Homepage](https://labs.foe-services.de/projects/google-analytics-mu/) | 
-[WordPress.org](https://wordpress.org/extend/plugins/google-analytics-mu/) | 
-[GitHub-Repository](https://github.com/Foe-Services-Labs/Google-Analytics-MU/) | 
-[WordPress.org-SVN](http://plugins.trac.wordpress.org/browser/google-analytics-mu/) | 
-[Issue-Tracker](https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues) | 
-[Foe Services Labs](http://labs.foe-services.de/)
+## Details
+[Homepage][1.1] | [WordPress.org][1.2]
 
-### WordPress
-* Requires at least: TODO
-* Tested up to: 3.5.1
-* Current stable release: [2.4](#TODO+tag2.4)
+| WordPress					| Version			| *		| Development				|					|
+| ----:						| :----				| :---: | :----						| :----				|
+| Requires at least:		| __3.1__			| *		| [GitHub-Repository][1.3]	| [Translate][1.7]	|
+| Tested up to:				| __3.5.1__			| *		| [Issue-Tracker][1.4]		| 					|
+| Current stable release:	| __[2.3][1.5]__	| *		| [WordPress.org-SVN][1.6]	|					|
 
-### About
-* Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Niklas Jonsson](http://www.darturonline.se/ga-mu-async.html)
-* Upstream: [Foe-Services-Mirrors / google-analytics-multisite-async](https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async) - Synced Git-Mirror of the official SVN-repo
+[1.1]: http://labs.foe-services.de/
+[1.2]: http://wordpress.org/extend/plugins/google-analytics-mu/
+[1.3]: https://github.com/wp-repository/google-analytics-mu
+[1.4]: https://github.com/wp-repository/google-analytics-mu/issues
+[1.5]: https://github.com/wp-repository/google-analytics-mu/archive/2.3.zip
+[1.6]: http://plugins.trac.wordpress.org/browser/google-analytics-mu/
+[1.7]: https://translate.foe-services.de/projects/google-analytics-mu
 
-### Languages
-* English (development language)
-* German (active)
+### Description
+Features
+* track the whole network with one Google Analytics UA code
+* let individual site owners track their site with their on UA code (optional, set by the network admin panel)
+* track Google PageSpeed (optional) (network-wide + site-specific)
+* collect data with anonymized IPs (optional) (network-wide + site-specific)
 
-* Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
 
-### Changelog
-* 2.3
- * ADDED tabbed network settings + minor styling improments
-* 2.2
- * ADDED FEATURE 'autoupdate' via wordpress.org
-* 2.1
- * ADDED FEATURE '_trackPageLoadTime'
- * ADDED FEATURE '_anonymizeIp()'
-* 2.0
- * FIX XSS vulnerability (by Dan Collis-Puro)
- * FIX language support
-
-### Roadmap
-* minified javascript snippet
-* change code to OOP
-
-### Installation (automatic)
-* just install like any other WordPress Plugin via the wp control-panel
-
-### Update (automatic)
-* just update via the wp control-panel
-
-### License: [GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)
-  
+## Development
 ### Developers
-* Christian Foellmann (cfoellmann): [Github](https://github.com/cfoellmann) | [WordPress.org](https://profiles.wordpress.org/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
-* Foe Services Labs (foe-services-labs): [Github](https://github.com/Foe-Services-Labs) | [WordPress.org](https://profiles.wordpress.org/foe-services-labs) | [Web](http://labs.foe-services.de) | [Mail](mailto:labs@foe-services.de)
+| Name					| GitHub				| WordPress.org			| Web									| Status				|
+| :----					| :----					| :----					| :----									| ----:					|
+| Christian Foellmann	| [cfoellmann][2.4.1]	| [cfoellmann][2.4.2]	| http://www.foe-services.de			| Current maintainer	|
 
-* Upstream (Google Analytics Multisite Async) by Niklas Jonsson (Dartur): [http://darturonline.se/ga_mu_async.html](http://darturonline.se/ga_mu_async.html)
+### Fork
+Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Niklas Jonsson](http://www.darturonline.se/ga-mu-async.html)
 
-### Contributations are always welcome
+[2.4.1]: https://github.com/cfoellmann
+[2.4.2]: http://profiles.wordpress.org/cfoellmann
+
+
+## License
+__[GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)__
+
+Google Analytics MU is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as 
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+## Changelog
+* __2.4__ _[future plans/roadmap][4.1]_
+* __2.3__
+	* ADDED tabbed network settings + minor styling improments
+* __2.2__
+	* ADDED FEATURE 'autoupdate' via wordpress.org
+* __2.1__
+	* ADDED FEATURE '_trackPageLoadTime'
+	* ADDED FEATURE '_anonymizeIp()'
+* __2.0__
+	* FIX XSS vulnerability (by Dan Collis-Puro)
+	* FIX language support
+
+[4.1]: https://github.com/wp-repository/google-analytics-mu/issues?milestone=1
+
+# Contributations are always welcome
