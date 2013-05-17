@@ -1,5 +1,5 @@
 === Google Analytics MU ===
-Contributors: Foe Services Labs, cfoellmann
+Contributors: wp-repository, Foe Services Labs, cfoellmann
 Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 2.7.0
 Tested up to: 3.5
