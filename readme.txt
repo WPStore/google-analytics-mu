@@ -3,7 +3,7 @@ Contributors: wp-repository, Foe Services Labs, cfoellmann
 Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 2.7.0
 Tested up to: 3.5
-Stable tag: 2.3.1
+Stable tag: 2.4-dev
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

@@ -3,7 +3,7 @@
 Plugin Name: Google Analytics MU
 Plugin URI: https://wordpress.org/extend/plugins/google-analytics-mu/
 Description: Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
-Version: 2.3
+Version: 2.4-dev
 Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
 License: GPLv2
