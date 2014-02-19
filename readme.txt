@@ -1,15 +1,20 @@
 === Google Analytics MU ===
 Contributors: wp-repository, Foe Services Labs, cfoellmann
-Tags: Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
+Tags: adopt-me, needs-takeover, Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 2.7.0
 Tested up to: 3.5
 Stable tag: 2.4-dev
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Network admins can setup network-wide GA tracking and give individual site owners the option to use their own tracking code
+ADOPT ME -- Network admins can setup network-wide GA tracking and give individual site owners the option to use their own tracking code
 
 == Description ==
+
+= Adopt Me =
+Since we do/can not use the plugin anymore we need to abandon this plugin.
+This means that this plugin will be rotting away in the repo unless someone else picks up the development.
+If you are interested contact me [@GitHub](https://github.com/cfoellmann).
 
 = WP requirements =
 * WordPress multisite installations __ONLY__
@@ -25,20 +30,8 @@ Network admins can setup network-wide GA tracking and give individual site owner
 * English (development language -> active)
 * German (active)
 
-* Help to translate at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
-
 = Development =
-* Contribute Code at [https://github.com/Foe-Services-Labs/Google-Analytics-MU](https://github.com/Foe-Services-Labs/Google-Analytics-MU)
-* Contribute Translations at [https://translate.foe-services.de/projects/google-analytics-mu](https://translate.foe-services.de/projects/google-analytics-mu)
-
-* Fork of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by Niklas Jonsson (Dartur): http://darturonline.se/ga_mu_async.html
-
-= Developers =
-* Christian Foellmann (cfoellmann): [Github](https://github.com/cfoellmann) | [WordPress.org](https://profiles.wordpress.org/cfoellmann) | [Web](http://www.foe-services.de) | [Mail](mailto:foellmann@foe-services.de)
-* Foe Services Labs (foe-services-labs): [Github](https://github.com/Foe-Services-Labs) | [WordPress.org](https://profiles.wordpress.org/foe-services-labs) | [Web](http://labs.foe-services.de) | [Mail](mailto:labs@foe-services.de)
-
-= Contributions are always welcome! =
-__Please fork at GitHub and use "Pull Requests"__
+* Contribute Code at [https://github.com/wp-repository/Google-Analytics-MU](https://github.com/wp-repository/Google-Analytics-MU)
 
 == Installation ==
 

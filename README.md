@@ -18,6 +18,11 @@ __Provides info to site admins as to which plugins are activated sitewide, and w
 [1.7]: https://translate.foe-services.de/projects/google-analytics-mu
 [1.8]: https://github.com/wp-repository/google-analytics-mu/archive/master.zip
 
+### Adopt Me
+Since we do/can not use the plugin anymore we need to abandon this plugin.
+This means that this plugin will be rotting away in the repo unless someone else picks up the development.
+If you are interested contact me [@GitHub](https://github.com/cfoellmann).
+
 ### Description
 Features
 * track the whole network with one Google Analytics UA code
