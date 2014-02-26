@@ -3,7 +3,7 @@
 Plugin Name: Google Analytics MU
 Plugin URI: https://wordpress.org/extend/plugins/google-analytics-mu/
 Description: Collect network-wide Google Analytics statistics and allow site admins to use their own tracking codes
-Version: 2.4-dev
+Version: 2.4
 Author: Foe Services Labs
 Author URI: http://labs.foe-services.de
 License: GPLv2
@@ -16,7 +16,7 @@ Domain Path: /languages
     Copyright 2011-2012  Niklas Jonsson  (email : niklas@darturonline.se)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -59,24 +59,24 @@ endif;
 
 if ( !function_exists('google_analytics_mu_options') ) :
 	function google_analytics_mu_options() {
-		
+
 		global $blog_id;
-                
+
                 $plugin_dir = basename(dirname(__FILE__));
                 load_plugin_textdomain( 'google-analytics-mu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-		
+
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'google-analytics-mu') );
 		}
-		
-		if (isset($_POST['UAID'])) {
+
+		if ( isset( $_POST['UAID'] ) && ( !empty($_POST) && check_admin_referer( 'google-analytics-mu-settings', 'google-analytics-mu-settings-nonce' ) ) ) {
 			update_option(UAID_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['UAID']));
                         update_option(ANONYMIZEIP_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['AnonymizeIpActivated']));
                         update_option(PAGESPEED_ACTIVATED_OPTION, preg_replace('/[^a-zA-Z\d\-]/','',$_POST['PageSpeedActivated']));
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Analytics ID saved.', 'google-analytics-mu') ?></p></div>
         <?php }	?>
-			    	
+
 		<div class="wrap">
                     <style>
                         .indent {padding-left: 2em}
@@ -84,7 +84,7 @@ if ( !function_exists('google_analytics_mu_options') ) :
                     </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Settings', 'google-analytics-mu') ?></h2>
-                        
+
                         <?php if ($blog_id == MAIN_BLOG_ID) { ?>
                         <div style="border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;background:#feb1b1;border:1px solid #fe9090;color:#820101;font-size:12px;font-weight:bold;height:auto;margin:10px 15px 0 0;font-family:arial;overflow:hidden;padding:4px 10px 6px;" id="update_sb">
                             <div style="margin:2px 10px 0 0;float:left;line-height:18px;padding-left:22px; padding:10px 10px 10px 30px;">
@@ -92,14 +92,15 @@ if ( !function_exists('google_analytics_mu_options') ) :
                             </div>
                         </div>
                         <?php } ?>
-                        
+
 			<form name="form" action="" method="post">
+				<?php wp_nonce_field( 'google-analytics-mu-settings', 'google-analytics-mu-settings-nonce' ); ?>
                             <ul>
                                 <li>
                                     <h4><?php _e('Google Analytics Property-ID', 'google-analytics-mu') ?>:</h4>
                                     <p class="indent">
                                         <input type="text" id="UAID" name="UAID"
-					<?php 
+					<?php
 					if ($blog_id == MAIN_BLOG_ID) {
 						echo 'disabled="disabled"';
 					} ?>
@@ -154,15 +155,15 @@ endif;
 
 if ( !function_exists('google_analytics_mu_network_options') ) :
 	function google_analytics_mu_network_options( $active_tab = '' ) {
-	
+
 		load_plugin_textdomain('google-analytics-mu', null, '/google-analytics-mu/languages/');
-		
+
 		if (!current_user_can('manage_options'))  {
 			wp_die( __('You do not have sufficient permissions to access this page.', 'google-analytics-mu') );
 		}
-				
-		if (current_user_can('manage_network'))  {
-			
+
+		if ( current_user_can('manage_network') && ( !empty($_POST) && check_admin_referer( 'google-analytics-mu-settings', 'google-analytics-mu-settings-nonce' ) ) )  {
+
 			if (isset($_POST['UAIDsuper'])) {
 				if (isset($_POST['AllowSiteSpecificAccounts'])) {
 					$allowSiteSpecificAccounts = 1;
@@ -192,7 +193,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
 			?>
 			<div id="message" class="updated fade"><p><?php _e('Network settings saved.', 'google-analytics-mu') ?></p></div>
 			<?php }	} ?>
-		
+
 		<div class="wrap">
                         <style type="text/css">
                             .tab-body {
@@ -205,7 +206,7 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                         </style>
                         <?php screen_icon( 'plugins' ); ?>
 			<h2><?php _e('Google Analytics Network Settings', 'google-analytics-mu') ?></h2>
-                        
+
                         <?php
                         if (isset($_GET['tab'])) {
                             $active_tab = $_GET['tab'];
@@ -213,9 +214,9 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                             $active_tab = 'about';
                         } else {
                             $active_tab = 'network-settings';
-                        } // end if/else 
+                        } // end if/else
                         ?>
-                        
+
                         <h2 class="nav-tab-wrapper">
                             <a href="?page=google-analytics-mu-network&tab=network-settings" class="nav-tab <?php echo $active_tab == 'network-settings' ? 'nav-tab-active' : ''; ?>"><?php _e('Network-Settings', 'google-analytics-mu'); ?></a>
                             <a href="?page=google-analytics-mu-network&tab=about" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>"><?php _e('About', 'google-analytics-mu'); ?></a>
@@ -226,8 +227,8 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
 
                                 <h1>Google Analytics MU - WordPress Plugin</h1>
                                 <p>
-                                    <a href="https://wordpress.org/extend/plugins/google-analytics-mu/" target="_blank">WordPress.org</a> | 
-                                    <a href="https://github.com/Foe-Services-Labs/Google-Analytics-MU/" target="_blank">GitHub Repository</a> | 
+                                    <a href="https://wordpress.org/extend/plugins/google-analytics-mu/" target="_blank">WordPress.org</a> |
+                                    <a href="https://github.com/Foe-Services-Labs/Google-Analytics-MU/" target="_blank">GitHub Repository</a> |
                                     <a href="https://github.com/Foe-Services-Labs/Google-Analytics-MU/issues" target="_blank">Issue Tracker</a>
                                 </p>
 
@@ -257,16 +258,17 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
 
                                 <h3><?php _e('License', 'google-analytics-mu'); ?>: <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GPLv2</a></h3>
 
-                            </div><!-- /.wrap --> 
-					
+                            </div><!-- /.wrap -->
+
                         <?php } elseif (current_user_can('manage_network')) { ?>
                             <div class="tab-body">
                             <form name="form" action="" method="post">
+								<?php wp_nonce_field( 'google-analytics-mu-settings', 'google-analytics-mu-settings-nonce' ); ?>
                                 <ul>
                                     <li>
                                         <h4><?php _e('Network Google Analytics Property-ID', 'google-analytics-mu') ?>:</h4>
                                         <p class="indent">
-                                            <input type="text" id="UAIDsuper" name="UAIDsuper" value="<?php 
+                                            <input type="text" id="UAIDsuper" name="UAIDsuper" value="<?php
                                             switch_to_blog(MAIN_BLOG_ID);
                                             echo get_option(UAID_OPTION);
                                             restore_current_blog();
@@ -278,15 +280,15 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                     <li>
                                         <h4><?php _e('Network domain', 'google-analytics-mu') ?>:</h4>
                                         <p class="indent">
-                                            <input type="text" id="MainDomain" name="MainDomain" value="<?php 
+                                            <input type="text" id="MainDomain" name="MainDomain" value="<?php
                                             switch_to_blog(MAIN_BLOG_ID);
                                             echo get_option(MAINDOMAIN_OPTION);
                                             restore_current_blog();
-                                            ?>" /> 
+                                            ?>" />
                                             <?php _e('Format: ".mydomain.com"', 'google-analytics-mu')?>
                                         </p>
                                         <p class="indent">
-                                            <?php printf( __('Start with a dot! This value goes into %s', 'google-analytics-mu'), "<i>_gaq.push(['_setDomainName', 'NETWORK_DOMAIN'])</i>"); ?> 
+                                            <?php printf( __('Start with a dot! This value goes into %s', 'google-analytics-mu'), "<i>_gaq.push(['_setDomainName', 'NETWORK_DOMAIN'])</i>"); ?>
                                         </p>
                                     </li>
                                     <li>
@@ -346,15 +348,15 @@ if ( !function_exists('google_analytics_mu_network_options') ) :
                                 </ul>
                                 <p><input type="submit" id="submit" name="submit" class="button-primary" value="<?php _e( 'Save Changes') ?>" /></p>
                             </form>
-                            </div><!-- /.wrap --> 
+                            </div><!-- /.wrap -->
                         <?php } ?>
-		</div>		
+		</div>
 		<?php }
 endif;
 
 if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 	function ga_mu_plugin_add_script_to_head() {
-	
+
 		switch_to_blog(MAIN_BLOG_ID);
 		$uaidsuper = get_option(UAID_OPTION);
 		$maindomain = get_option(MAINDOMAIN_OPTION);
@@ -366,27 +368,27 @@ if ( !function_exists('ga_mu_plugin_add_script_to_head') ) :
 		$uaid = get_option(UAID_OPTION);
 		$anonymizeIp = get_option(ANONYMIZEIP_ACTIVATED_OPTION);
                 $PageSpeed = get_option(PAGESPEED_ACTIVATED_OPTION);
-                
+
 		$super = false;
 		$user = false;
-		
+
 		if (isset($uaidsuper) && $uaidsuper != '' && $uaidsuper != '0') {
 			$super = true;
 		}
 		if (isset($uaid) && $uaid != '' && $uaid != '0') {
 			$user = true;
 		}
-		
+
 		if ($super && $user) {
 			if ($uaidsuper == $uaid) {
 				$user = false;
 			}
 		}
-		
+
 		if ($user == true && (!isset($siteSpecificAllowed) || $siteSpecificAllowed == '' || $siteSpecificAllowed == '0')) {
 			$user = false;
 		}
-		
+
 		if ($super || $user)
 		{
                 $prefix = ''
@@ -403,7 +405,7 @@ _gaq.push(['_setDomainName', '<?php echo $maindomain ?>']);
 <?php
 } ?>
 _gaq.push(['_trackPageview']);
-<?php 
+<?php
 if (isset($PageSpeedNetwork) && $PageSpeedNetwork != '' && $PageSpeedNetwork != '0')
 { ?>
 _gaq.push(['_trackPageLoadTime']);
@@ -429,5 +431,5 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-</script>			
+</script>
 <?php } } endif; ?>

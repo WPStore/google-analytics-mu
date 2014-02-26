@@ -3,7 +3,7 @@ Contributors: wp-repository, Foe Services Labs, cfoellmann
 Tags: adopt-me, needs-takeover, Google Analytics, analytics, statistics, stats, lightweight, multisite, multiuser, multiblog, tracking, simple, network
 Requires at least: 2.7.0
 Tested up to: 3.5
-Stable tag: 2.4-dev
+Stable tag: 2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -51,6 +51,9 @@ Visit the [Issue tracker at GitHub](https://github.com/Foe-Services-Labs/Google-
 Please do not use the support section here at WordPress.org.
 
 == Changelog ==
+= 2.4 =
+* added nonce check on settings pages to protect from CSRF - props @harrym
+
 = 2.3.1 =
 * proper formating (source code styling) for the GA snippet
 
@@ -72,6 +75,6 @@ Please do not use the support section here at WordPress.org.
 
 = 2.0 =
 * Forking of [Google Analytics Multisite Async](https://wordpress.org/extend/plugins/google-analytics-multisite-async/) by [Dartus](https://profiles.wordpress.org/Dartur/)
-* Git-Mirror = Upstream: [https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async](https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async) 
+* Git-Mirror = Upstream: [https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async](https://github.com/Foe-Services-Mirrors/google-analytics-multisite-async)
 * FIX XSS vulnerability (by Dan Collis-Puro) (v2.0)
 * FIX language support (v2.0)
