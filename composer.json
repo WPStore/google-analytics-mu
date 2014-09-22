@@ -1,0 +1,28 @@
+{
+  "name": "wpstore/google-analytics-mu",
+  "description": "@todo",
+  "version": "0.0.1",
+  "type": "project",
+  "homepage": "https://www.wpstore.io/plugins/google-analytics-mu/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name" : "WPStore.io",
+      "email" : "code@wpstore.io",
+      "homepage" : "https://www.wpstore.io"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/WPStore/google-analytics-mu/issues"
+  },
+  "require": {},
+  "autoload": {
+    "psr-4": {
+        "WPStore\\GoogleAnalyticsMU\\": "GoogleAnalyticsMU/"
+    }
+  },
+  "config": {
+    "vendor-dir": "libs",
+    "autoloader-suffix": "WPStoreGoogleAnalyticsMU"
+  }
+}
